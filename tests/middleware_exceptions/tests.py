@@ -191,7 +191,7 @@ class MiddlewareNotUsedTests(SimpleTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
             cm.records[0].getMessage(),
-            'Asynchronous middleware middleware_exceptions.tests.MyMiddleware '
+            'Synchronous middleware middleware_exceptions.tests.MyMiddleware '
             'adapted.',
         )
         self.assertEqual(
@@ -228,7 +228,7 @@ class MiddlewareSyncAsyncTests(SimpleTestCase):
         self.assertEqual(response.status_code, 402)
         self.assertEqual(
             cm.records[0].getMessage(),
-            "Synchronous middleware "
+            "Asynchronous middleware "
             "middleware_exceptions.middleware.async_payment_middleware "
             "adapted.",
         )
@@ -254,7 +254,7 @@ class MiddlewareSyncAsyncTests(SimpleTestCase):
         self.assertEqual(response.status_code, 402)
         self.assertEqual(
             cm.records[0].getMessage(),
-            "Asynchronous middleware "
+            "Synchronous middleware "
             "middleware_exceptions.middleware.PaymentMiddleware adapted.",
         )
 
